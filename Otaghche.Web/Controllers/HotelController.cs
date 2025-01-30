@@ -30,6 +30,7 @@ namespace Otaghche.Web.Controllers
             {
                 await _context.Hotels.AddAsync(hotel);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "هتل جدید با موفقیت اضافه شد";
                 return RedirectToAction("Index");
             }
             return View(hotel);
@@ -52,6 +53,7 @@ namespace Otaghche.Web.Controllers
             {
                 _context.Hotels.Update(hotel);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "هتل بروزرسانی شد";
                 return RedirectToAction("Index");
             }
             return View(hotel);
@@ -79,6 +81,7 @@ namespace Otaghche.Web.Controllers
             
             _context.Hotels.Remove(correctHotel);
             await _context.SaveChangesAsync();
+            TempData["success"] = "هتل حذف شد";
             return RedirectToAction("Index");
         }
     }
