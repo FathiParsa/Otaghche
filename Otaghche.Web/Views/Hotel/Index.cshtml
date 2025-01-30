@@ -35,8 +35,18 @@
 					<tr>
 						<td>@hotel.Name</td>
 						<td>@hotel.Price هزار تومان</td>
-						<td>@hotel.Sqft</td>
-						<td>@hotel.Occupancy</td>
+						<td>@hotel.Sqft متر مکعب</td>
+						<td>@hotel.Occupancy نفر</td>
+						<td>
+							<div class="btn-group w-75" role="group" >
+								<a asp-controller="Hotel" asp-action="Update" asp-route-hotelId="@hotel.Id" class="btn btn-success mx-2">
+									ویرایش <i class="bi bi-pencil-square"></i>
+								</a>
+								<a asp-controller="Hotel" asp-action="Delete" asp-route-hotelId="@hotel.Id" class="btn btn-danger mx-2">
+									حذف <i class="bi bi-trash-fill"></i>
+								</a>
+							</div>
+						</td>
 					</tr>
 				}
 			</tbody>

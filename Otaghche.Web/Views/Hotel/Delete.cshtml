@@ -1,54 +1,45 @@
 ﻿@model Hotel
 
-@{
-
-}
-
 <div class="w-100 card border-0 p-4">
 	<div class="card-header bg-success bg-gradient ml-0 py-3">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h2 class="text-white py-2">افزودن هتل جدید</h2>
+				<h2 class="text-white py-2">حذف هتل</h2>
 			</div>
 		</div>
 	</div>
 	<div class="card-body border p-4">
 		<form method="post" class="row">
+			<input asp-for="Id" hidden />
 			<div class="p-4">
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Name" />
+					<input type="text" class="form-control border shadow" asp-for="Name"  disabled/>
 					<label class="form-label ms-2" asp-for="Name"></label>
-					<span asp-validation-for="Name" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Description" />
+					<input type="text" class="form-control border shadow" asp-for="Description" disabled />
 					<label class="form-label ms-2" asp-for="Description"></label>
-					<span asp-validation-for="Description" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Price" />
+					<input type="text" class="form-control border shadow" asp-for="Price" disabled />
 					<label class="form-label ms-2" asp-for="Price"></label>
-					<span asp-validation-for="Price" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Sqft" />
+					<input type="text" class="form-control border shadow" asp-for="Sqft" disabled />
 					<label class="form-label ms-2" asp-for="Sqft"></label>
-					<span asp-validation-for="Sqft" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Occupancy" />
+					<input type="text" class="form-control border shadow" asp-for="Occupancy" disabled />
 					<label class="form-label ms-2" asp-for="Occupancy"></label>
-					<span asp-validation-for="Occupancy" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="ImageUrl" />
+					<input type="text" class="form-control border shadow" asp-for="ImageUrl" disabled />
 					<label class="form-label ms-2" asp-for="ImageUrl"></label>
-					<span asp-validation-for="ImageUrl" class="text-danger"></span>
 				</div>
 				<div class="row pt-2">
 					<div class="col-6 col-md-3 m-1 mt-2">
-						<button type="submit" class="btn btn-success w-100">
-							ثبت  <i class="bi bi-check-square" ></i>
+						<button type="submit" class="btn btn-danger w-100">
+							حذف   <i class="bi bi-trash-fill"></i>
 						</button>
 					</div>
 					<div class="col-6 col-md-3 m-1 mt-2">
@@ -57,14 +48,7 @@
 						</a>
 					</div>
 				</div>
-
 			</div>
 		</form>
-
 	</div>
 </div>
-
-
-@section Scripts{
-	<partial name="_ValidationScriptsPartial" />
-}
