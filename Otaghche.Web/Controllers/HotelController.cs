@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Otaghche.Domain.Entities;
 using Otaghche.Infrastructure.Data;
 
 namespace Otaghche.Web.Controllers
@@ -17,9 +18,21 @@ namespace Otaghche.Web.Controllers
             return View(hotels);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Hotel hotel)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.AddAsync(hotel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(hotel);
         }
     }
 }
