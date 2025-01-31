@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using Otaghche.Domain.Entities;
 
 namespace Otaghche.Infrastructure.Data
@@ -11,6 +12,7 @@ namespace Otaghche.Infrastructure.Data
         }
 
         public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Room> Rooms { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +51,58 @@ namespace Otaghche.Infrastructure.Data
                     Sqft = 750,
                 }
             );
+
+            modelBuilder.Entity<Room>().HasData(
+
+                new Room
+                {
+                    HotelId = 1,
+                    RoomNumber = 101
+                },
+                new Room
+                {
+                    HotelId = 1,
+                    RoomNumber = 102
+                },
+                new Room
+                {
+                    HotelId = 1,
+                    RoomNumber = 103
+                },
+                new Room
+                {
+                    HotelId = 2,
+                    RoomNumber = 201
+                },
+                new Room
+                {
+                    HotelId = 2,
+                    RoomNumber = 202
+                },
+                new Room
+                {
+                    HotelId = 2,
+                    RoomNumber = 203
+                },
+                new Room
+                {
+                    HotelId = 3,
+                    RoomNumber = 301
+                },
+                new Room
+                {
+                    HotelId = 3,
+                    RoomNumber = 302
+                },
+                new Room
+                {
+                    HotelId = 3,
+                    RoomNumber = 303
+                });
+
+            modelBuilder.Entity<Room>().HasKey(k => k.RoomNumber);
+
+            modelBuilder.Entity<Room>().Property(k => k.RoomNumber).ValueGeneratedNever();
         }
     }
 }
