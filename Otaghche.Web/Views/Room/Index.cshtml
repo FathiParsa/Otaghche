@@ -15,7 +15,7 @@
 	<div class="card-body border p-4">
 		<div class="row pb-3">
 			<div class="col-6 offset-6 text-end">
-				<a asp-controller="Hotel" asp-action="Create" class="btn btn-secondary">  افزودن اتاق جدید   <i class="bi bi-plus-square"> </i> </a>
+				<a asp-controller="Room" asp-action="Create" class="btn btn-secondary">  افزودن اتاق جدید   <i class="bi bi-plus-square"> </i> </a>
 			</div>
 		</div>
 
@@ -36,10 +36,10 @@
 						<td>@room.Details</td>
 						<td>
 							<div class="btn-group w-75" role="group">
-								<a asp-controller="Room" asp-action="Update" asp-route-RoomNumber="@room.RoomNumber" class="btn btn-success mx-2">
+								<a asp-controller="Room" asp-action="Update" asp-route-roomNumber="@room.RoomNumber" class="btn btn-success mx-2">
 									ویرایش <i class="bi bi-pencil-square"></i>
 								</a>
-								<a asp-controller="Room" asp-action="Delete" asp-route-hotelId="@room.RoomNumber" class="btn btn-danger mx-2">
+								<a asp-controller="Room" asp-action="Delete" asp-route-roomNumber="@room.RoomNumber" class="btn btn-danger mx-2">
 									حذف <i class="bi bi-trash-fill"></i>
 								</a>
 							</div>
