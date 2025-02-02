@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Otaghche.Appliaction.Common.Interfaces;
 using Otaghche.Infrastructure.Data;
+using Otaghche.Infrastructure.Repositories;
 
 namespace Otaghche.Web
 {
@@ -14,6 +16,9 @@ namespace Otaghche.Web
 
             builder.Services.AddDbContext<ApplicationDbContext>(option =>
             option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+            builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
             var app = builder.Build();
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Otaghche.Appliaction.Common.Interfaces;
 using Otaghche.Domain.Entities;
 using Otaghche.Infrastructure.Data;
 
@@ -7,14 +9,15 @@ namespace Otaghche.Web.Controllers
 {
     public class HotelController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public HotelController(ApplicationDbContext context)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HotelController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IActionResult> Index()
         {
-            var hotels = await _context.Hotels.ToListAsync();
+            var hotels = await _unitOfWork.HotelRepository.GetAllAsync();
             return View(hotels);
         }
 
@@ -28,8 +31,8 @@ namespace Otaghche.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _context.Hotels.AddAsync(hotel);
-                await _context.SaveChangesAsync();
+                await _unitOfWork.HotelRepository.AddAsync(hotel);
+                await _unitOfWork.SaveAsync();
                 TempData["success"] = "هتل جدید با موفقیت اضافه شد";
                 return RedirectToAction("Index");
             }
@@ -38,7 +41,7 @@ namespace Otaghche.Web.Controllers
 
         public async Task<IActionResult> Update(int hotelId)
         {
-            Hotel? hotel = await _context.Hotels.FirstOrDefaultAsync(h => h.Id == hotelId);
+            Hotel? hotel = await _unitOfWork.HotelRepository.GetFirstByFilterAsync(h => h.Id == hotelId);
             if (hotel == null) 
             { 
                 return NotFound();
@@ -51,8 +54,8 @@ namespace Otaghche.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Hotels.Update(hotel);
-                await _context.SaveChangesAsync();
+                _unitOfWork.HotelRepository.Update(hotel);
+                await _unitOfWork.SaveAsync();
                 TempData["success"] = "هتل بروزرسانی شد";
                 return RedirectToAction("Index");
             }
@@ -61,7 +64,7 @@ namespace Otaghche.Web.Controllers
 
         public async Task<IActionResult> Delete(int hotelId)
         {
-            var hotel = await _context.Hotels.FirstOrDefaultAsync( h => h.Id == hotelId);
+            var hotel = await _unitOfWork.HotelRepository.GetFirstByFilterAsync(h => h.Id == hotelId);
             if (hotel == null)
             {
                 return NotFound();
@@ -72,15 +75,15 @@ namespace Otaghche.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Hotel hotel)
         {
-            Hotel? correctHotel = await _context.Hotels.FirstOrDefaultAsync( h => h.Id == hotel.Id);
+            Hotel? correctHotel = await _unitOfWork.HotelRepository.GetFirstByFilterAsync(h => h.Id == hotel.Id);
 
             if (correctHotel == null)
             { 
                 return NotFound();
             }
-            
-            _context.Hotels.Remove(correctHotel);
-            await _context.SaveChangesAsync();
+
+            _unitOfWork.HotelRepository.Delete(correctHotel);
+            await _unitOfWork.SaveAsync();
             TempData["success"] = "هتل حذف شد";
             return RedirectToAction("Index");
         }
