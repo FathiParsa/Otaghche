@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Otaghche.Appliaction.Common.Interfaces;
-using Otaghche.Infrastructure.Data;
 using Otaghche.Web.ViewModels;
 
 namespace Otaghche.Web.Controllers
@@ -10,10 +8,8 @@ namespace Otaghche.Web.Controllers
     public class RoomController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ApplicationDbContext _context { get; set; }
-        public RoomController(ApplicationDbContext context , IUnitOfWork unitOfWork)
+        public RoomController(IUnitOfWork unitOfWork)
         {
-            _context = context;
             _unitOfWork = unitOfWork;
         }
         public async Task<IActionResult> Index()

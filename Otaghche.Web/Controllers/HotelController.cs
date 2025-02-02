@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Otaghche.Appliaction.Common.Interfaces;
 using Otaghche.Domain.Entities;
-using Otaghche.Infrastructure.Data;
+
 
 namespace Otaghche.Web.Controllers
 {
