@@ -4,6 +4,7 @@
     {
         IHotelRepository HotelRepository { get; }
         IRoomRepository RoomRepository { get; }
+        IAmenityRepository AmenityRepository { get; }
 
         Task SaveAsync();
     }

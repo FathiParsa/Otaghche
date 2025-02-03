@@ -11,43 +11,48 @@
 	<div class="card-body border p-4">
 		<form method="post" class="row">
 			<input asp-for="Id" hidden />
-			<div class="p-4">
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Name"  disabled/>
-					<label class="form-label ms-2" asp-for="Name"></label>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Description" disabled />
-					<label class="form-label ms-2" asp-for="Description"></label>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Price" disabled />
-					<label class="form-label ms-2" asp-for="Price"></label>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Sqft" disabled />
-					<label class="form-label ms-2" asp-for="Sqft"></label>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Occupancy" disabled />
-					<label class="form-label ms-2" asp-for="Occupancy"></label>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="ImageUrl" disabled />
-					<label class="form-label ms-2" asp-for="ImageUrl"></label>
-				</div>
-				<div class="row pt-2">
-					<div class="col-6 col-md-3 m-1 mt-2">
-						<button type="submit" class="btn btn-danger w-100">
-							حذف   <i class="bi bi-trash-fill"></i>
-						</button>
+			<div class="col-10">
+				<div class="p-4">
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Name" disabled />
+						<label class="form-label ms-2" asp-for="Name"></label>
 					</div>
-					<div class="col-6 col-md-3 m-1 mt-2">
-						<a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary w-100">
-							لغو  <i class="bi bi-x"></i>
-						</a>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Description" disabled />
+						<label class="form-label ms-2" asp-for="Description"></label>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Price" disabled />
+						<label class="form-label ms-2" asp-for="Price"></label>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Sqft" disabled />
+						<label class="form-label ms-2" asp-for="Sqft"></label>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Occupancy" disabled />
+						<label class="form-label ms-2" asp-for="Occupancy"></label>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="ImageUrl" disabled />
+						<label class="form-label ms-2" asp-for="ImageUrl"></label>
+					</div>
+					<div class="row pt-2">
+						<div class="col-6 col-md-3 m-1 mt-2">
+							<button type="submit" class="btn btn-danger w-100">
+								حذف   <i class="bi bi-trash-fill"></i>
+							</button>
+						</div>
+						<div class="col-6 col-md-3 m-1 mt-2">
+							<a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary w-100">
+								لغو  <i class="bi bi-x"></i>
+							</a>
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-2">
+				<img src="@Model.ImageUrl" width="100%" style="border:1px solid #bbb9b9; border-radius: 5px; " />
 			</div>
 		</form>
 	</div>

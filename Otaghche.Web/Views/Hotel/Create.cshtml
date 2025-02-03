@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="card-body border p-4">
-		<form method="post" class="row">
+		<form method="post" class="row" enctype="multipart/form-data">
 			<div class="p-4">
 				<div class="form-floating py-1 px-2 col-12 m-1">
 					<input type="text" class="form-control border shadow" asp-for="Name" />
@@ -41,7 +41,8 @@
 					<span asp-validation-for="Occupancy" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="ImageUrl" />
+					<input asp-for="Image" class="form-control border shadow"/>
+					<input type="text" class="form-control border shadow" asp-for="ImageUrl" hidden/>
 					<label class="form-label ms-2" asp-for="ImageUrl"></label>
 					<span asp-validation-for="ImageUrl" class="text-danger"></span>
 				</div>

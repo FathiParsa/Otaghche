@@ -9,51 +9,57 @@
 		</div>
 	</div>
 	<div class="card-body border p-4">
-		<form method="post" class="row">
-			<input asp-for="Id"  hidden/>
-			<div class="p-4">
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Name" />
-					<label class="form-label ms-2" asp-for="Name"></label>
-					<span asp-validation-for="Name" class="text-danger"></span>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Description" />
-					<label class="form-label ms-2" asp-for="Description"></label>
-					<span asp-validation-for="Description" class="text-danger"></span>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Price" />
-					<label class="form-label ms-2" asp-for="Price"></label>
-					<span asp-validation-for="Price" class="text-danger"></span>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Sqft" />
-					<label class="form-label ms-2" asp-for="Sqft"></label>
-					<span asp-validation-for="Sqft" class="text-danger"></span>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="Occupancy" />
-					<label class="form-label ms-2" asp-for="Occupancy"></label>
-					<span asp-validation-for="Occupancy" class="text-danger"></span>
-				</div>
-				<div class="form-floating py-1 px-2 col-12 m-1">
-					<input type="text" class="form-control border shadow" asp-for="ImageUrl" />
-					<label class="form-label ms-2" asp-for="ImageUrl"></label>
-					<span asp-validation-for="ImageUrl" class="text-danger"></span>
-				</div>
-				<div class="row pt-2">
-					<div class="col-6 col-md-3 m-1 mt-2">
-						<button type="submit" class="btn btn-success w-100">
-							ثبت تغییرات  <i class="bi bi-check-square"></i>
-						</button>
+		<form method="post" class="row" enctype="multipart/form-data">
+			<input asp-for="Id" hidden />
+			<div class="col-10">
+				<div class="p-4">
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Name" />
+						<label class="form-label ms-2" asp-for="Name"></label>
+						<span asp-validation-for="Name" class="text-danger"></span>
 					</div>
-					<div class="col-6 col-md-3 m-1 mt-2">
-						<a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary w-100">
-							لغو  <i class="bi bi-x"></i>
-						</a>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Description" />
+						<label class="form-label ms-2" asp-for="Description"></label>
+						<span asp-validation-for="Description" class="text-danger"></span>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Price" />
+						<label class="form-label ms-2" asp-for="Price"></label>
+						<span asp-validation-for="Price" class="text-danger"></span>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Sqft" />
+						<label class="form-label ms-2" asp-for="Sqft"></label>
+						<span asp-validation-for="Sqft" class="text-danger"></span>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input type="text" class="form-control border shadow" asp-for="Occupancy" />
+						<label class="form-label ms-2" asp-for="Occupancy"></label>
+						<span asp-validation-for="Occupancy" class="text-danger"></span>
+					</div>
+					<div class="form-floating py-1 px-2 col-12 m-1">
+						<input asp-for="Image" class="form-control border shadow" />
+						<input type="text" class="form-control border shadow" asp-for="ImageUrl" hidden />
+						<label class="form-label ms-2" asp-for="ImageUrl"></label>
+						<span asp-validation-for="ImageUrl" class="text-danger"></span>
+					</div>
+					<div class="row pt-2">
+						<div class="col-6 col-md-3 m-1 mt-2">
+							<button type="submit" class="btn btn-success w-100">
+								ثبت تغییرات  <i class="bi bi-check-square"></i>
+							</button>
+						</div>
+						<div class="col-6 col-md-3 m-1 mt-2">
+							<a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary w-100">
+								لغو  <i class="bi bi-x"></i>
+							</a>
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-2">
+				<img src="@Model.ImageUrl" width="100%" style="border:1px solid #bbb9b9;border-radius:5px;" />
 			</div>
 		</form>
 	</div>

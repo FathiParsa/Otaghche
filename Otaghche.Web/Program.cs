@@ -19,6 +19,7 @@ namespace Otaghche.Web
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IHotelRepository, HotelRepository>();
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+            builder.Services.AddScoped<IAmenityRepository, AmenityRepository>();
 
             var app = builder.Build();
 

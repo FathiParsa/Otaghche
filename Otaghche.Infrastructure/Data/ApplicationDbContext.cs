@@ -12,7 +12,8 @@ namespace Otaghche.Infrastructure.Data
         }
 
         public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<Room> Rooms { get; set; } 
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Amenity> Amenities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -103,6 +104,71 @@ namespace Otaghche.Infrastructure.Data
             modelBuilder.Entity<Room>().HasKey(k => k.RoomNumber);
 
             modelBuilder.Entity<Room>().Property(k => k.RoomNumber).ValueGeneratedNever();
+
+
+            modelBuilder.Entity<Amenity>().HasData(
+
+                  new Amenity
+                  {
+                      Id = 1,
+                      HotelId = 1,
+                      Name = "وای فای"
+                  }, new Amenity
+                  {
+                      Id = 2,
+                      HotelId = 1,
+                      Name = "صبحانه"
+                  }, new Amenity
+                  {
+                      Id = 3,
+                      HotelId = 1,
+                      Name = "تلویزیون"
+                  }, new Amenity
+                  {
+                      Id = 4,
+                      HotelId = 1,
+                      Name = "یخچال"
+                  },
+
+                  new Amenity
+                  {
+                      Id = 5,
+                      HotelId = 2,
+                      Name = "رستوران"
+                  }, new Amenity
+                  {
+                      Id = 6,
+                      HotelId = 2,
+                      Name = "تاکسی سرویس"
+                  }, new Amenity
+                  {
+                      Id = 7,
+                      HotelId = 2,
+                      Name = "صندوق امانات"
+                  }, new Amenity
+                  {
+                      Id = 8,
+                      HotelId = 2,
+                      Name = "سرویس فرنگی"
+                  },
+
+                  new Amenity
+                  {
+                      Id = 9,
+                      HotelId = 3,
+                      Name = "کافی شاپ"
+                  }, new Amenity
+                  {
+                      Id = 10,
+                      HotelId = 3,
+                      Name = "سالن اجتماعات"
+                  }, new Amenity
+                  {
+                      Id = 11,
+                      HotelId = 3,
+                      Name = "فروشگاه و خرید"
+                  }
+            );
         }
     }
 }

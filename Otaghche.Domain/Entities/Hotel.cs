@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Otaghche.Domain.Entities
 {
@@ -25,6 +27,8 @@ namespace Otaghche.Domain.Entities
         [Required(ErrorMessage = "فیلد ظرفیت نمیتواند خالی باشد")]
         [Display(Name = "ظرفیت نفرات")]
         public int Occupancy { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
         [Display(Name = "لینک تصویر")]
         public string? ImageUrl { get; set; }
         public DateTime?  CreatedAt { get; set; }

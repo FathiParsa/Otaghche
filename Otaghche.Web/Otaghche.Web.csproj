@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Otaghche.Infrastructure\Otaghche.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\HotelImages\" />
+  </ItemGroup>
+
 </Project>

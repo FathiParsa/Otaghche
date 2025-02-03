@@ -12,11 +12,17 @@ namespace Otaghche.Infrastructure.Repositories
 
         public IRoomRepository RoomRepository { get; private set; }
 
-        public UnitOfWork(ApplicationDbContext context , IHotelRepository hotelRepository , IRoomRepository roomRepository)
+        public IAmenityRepository AmenityRepository { get; private set; }
+
+        public UnitOfWork(ApplicationDbContext context ,
+            IHotelRepository hotelRepository ,
+            IRoomRepository roomRepository ,
+            IAmenityRepository amenityRepository)
         {
             _context = context;
             HotelRepository = hotelRepository;
             RoomRepository = roomRepository;
+            AmenityRepository = amenityRepository;
         }
 
         public async Task SaveAsync()
