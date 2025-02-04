@@ -5,8 +5,8 @@ namespace Otaghche.Web.ViewModels
 {
     public class AmenityVM
     {
-        public Amenity Amenity { get; set; }
+        public Amenity? Amenity { get; set; }
 
-        public IEnumerable<SelectListItem> HotelsList { get; set; }
+        public IEnumerable<SelectListItem>? HotelsList { get; set; }
     }
 }
