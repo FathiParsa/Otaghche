@@ -1,7 +1,48 @@
 ﻿@model IEnumerable<Amenity>
 
-<div class="">
+<div class="w-100 card p-4 border-0">
+	<div class="card-header bg-success bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2"> لیست امکانات رفاهی</h2>
+			</div>
+		</div>
+	</div>
 
-	
-
+	<div class="card-body border p-4">
+		<div class="row pb-3">
+			<div class="col-6 offset-6 text-end">
+				<a asp-controller="Amenity" asp-action="Create" class="btn btn-secondary">افزودن امکانات رفاهی جدید</a>
+			</div>
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>نام هتل</th>
+					<th>امکان رفاهی</th>
+					<th>توضیحات</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var amenity in Model)
+				{
+					<tr>
+						<td>@amenity.Hotel.Name</td>
+						<td>@amenity.Name</td>
+						<td>@amenity.Description</td>
+						<td>
+							<div class="btn-group w-75" role="group">
+								<a class="btn btn-info mx-2" asp-controller="Amenity" asp-action="Update" asp-route-amenityId="@amenity.Id">
+									ویرایش  <i class="bi bi-pencil-square"></i>
+								</a>
+								<a class="btn btn-danger mx-2" asp-controller="Amenity" asp-action="Delete" asp-route-amenityId="@amenity.Id">
+									حذف   <i class="bi bi-trash-fill"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
 </div>

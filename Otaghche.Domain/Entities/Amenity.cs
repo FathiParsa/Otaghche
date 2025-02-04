@@ -14,6 +14,7 @@ namespace Otaghche.Domain.Entities
         [Display(Name = "نام")]
         public required string Name { get; set; }
 
+        [Display (Name = "توضیحات")]
         public string? Description { get; set; }
 
         [ForeignKey("Hotel")]

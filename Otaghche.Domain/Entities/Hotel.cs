@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Otaghche.Domain.Entities
 {
@@ -33,5 +34,8 @@ namespace Otaghche.Domain.Entities
         public string? ImageUrl { get; set; }
         public DateTime?  CreatedAt { get; set; }
         public DateTime? UpdatedAt { get;set; }
+
+        [ValidateNever]
+        public IEnumerable<Amenity> Amenities { get; set; }
     }
 }

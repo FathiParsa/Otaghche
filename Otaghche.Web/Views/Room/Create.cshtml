@@ -16,8 +16,8 @@
 		<form method="post" class="row">
 			<div class="p-4">
 				<div class="form-floating py-1 px-2 col-12 m-1">
-					<select class="form-select border shadow" asp-for="Room.HotelId" asp-items="Model.HotelsList" >
-						<option selected disabled >--هتل را انتخاب کنید--</option>
+					<select class="form-select border shadow" asp-for="Room.HotelId" asp-items="Model.HotelsList">
+						<option selected disabled>--هتل مورد نظر را انتخاب کنید--</option>
 					</select>
 					<label class="form-label ms-2" asp-for="Room.HotelId"></label>
 					<span asp-validation-for="Room.HotelId" class="text-danger"></span>
