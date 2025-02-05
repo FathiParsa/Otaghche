@@ -29,13 +29,13 @@ namespace Otaghche.Domain.Entities
         [Display(Name = "ظرفیت نفرات")]
         public int Occupancy { get; set; }
         [NotMapped]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         [Display(Name = "لینک تصویر")]
         public string? ImageUrl { get; set; }
         public DateTime?  CreatedAt { get; set; }
         public DateTime? UpdatedAt { get;set; }
 
         [ValidateNever]
-        public IEnumerable<Amenity> Amenities { get; set; }
+        public IEnumerable<Amenity>? Amenities { get; set; }
     }
 }
