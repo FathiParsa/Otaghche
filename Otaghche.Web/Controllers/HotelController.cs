@@ -94,13 +94,13 @@ namespace Otaghche.Web.Controllers
                     hotel.ImageUrl = @"\Images\HotelImages\" + fileName;
                 }
 
-
-
                 _unitOfWork.HotelRepository.Update(hotel);
                 await _unitOfWork.SaveAsync();
                 TempData["success"] = "هتل بروزرسانی شد";
                 return RedirectToAction("Index");
             }
+
+            TempData["error"] = "خطا";
             return View(hotel);
         }
 

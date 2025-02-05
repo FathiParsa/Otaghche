@@ -1,27 +1,35 @@
 using System.Diagnostics;
+using System.Numerics;
 using Microsoft.AspNetCore.Mvc;
+using Otaghche.Appliaction.Common.Interfaces;
 using Otaghche.Web.Models;
+using Otaghche.Web.ViewModels;
 
 namespace Otaghche.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var hotels = await _unitOfWork.HotelRepository.GetAllByFilterAsync(includes : h => h.Amenities);
+
+            HomeVM homeVM = new()
+            {
+                 HotelsList = hotels,
+                 CheckInDate = DateOnly.FromDateTime(DateTime.Now),
+                 Nights = 1
+            };
+
+            return View(homeVM);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

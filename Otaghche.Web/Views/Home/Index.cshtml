@@ -1,8 +1,113 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeVM
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+
+    <img src="~/images/slide1.jpg" class="d-block w-100" alt="...">
+    
+    <form method="post" style="background-color:azure">
+        <div class="row p-0 mx-0 py-4">
+
+            <div class="col-12 col-md-5  offset-md-1 pl-2  pr-2 pr-md-0">
+                <div class="form-group">
+                    <label asp-for="@Model.CheckInDate" class="form-label">تاریخ ورود</label>
+                    <input class="form-control m-1 border shadow" asp-for="@Model.CheckInDate" type="date"/>
+                </div>
+            </div>
+
+            <div class="col-8 col-md-3 pl-2 pr-2">
+                <div class="form-group">
+                    <label asp-for="@Model.Nights" class="form-label">برای چند شب ؟</label>
+                    <select class="form-select m-1 shadow border" asp-for="@Model.Nights">
+                        @for (int i = 1; i < 11; i++)
+                        {
+                            <option value="@i">
+                                @i
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-4 col-md-2 pt-4 pr-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success btn-block mt-2">
+                        &nbsp; مشاهده هتل های موجود  <i class="bi bi-search"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="VillasList">
+            <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0" style="--bs-gutter-x:0">
+                @foreach (var hotel in Model.HotelsList)
+                {
+                    <div class="p-4 col-md-12 col-lg-6">
+                        <div class="row bg-white" style="border-radius:5px; border: 2px solid #aaa">
+                            <div class="col-4 p-2">
+                                <img class="d-block w-100" style="border-radius:5px;" src="@hotel.ImageUrl">
+                            </div>
+                            <div class="col-8">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-title text-warning" style="font-size:xx-large">@hotel.Name</p>
+                                    <div class="pt-2">
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(hotel.Id)'>
+                                            مشخصات
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="card-text p-1">
+                                    @Html.Raw(hotel.Description)
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <div class="row pb-3 pt-2 m-1">
+                                    <div class="col-4">
+                                        <a class="btn btn-success form-control btn-block">
+                                            رزرو
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class=""> <strong> حداکثر تعداد نفرات : @hotel.Occupancy </strong></span><br />
+                                        <span class=" pt-1"> <strong> مساحت : @hotel.Sqft </strong> </span><br />
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="text-warning float-end font-weight-bold pt-1" style="font-size:25px;">
+                                            تومان
+                                            <span style="border-bottom:1px solid #ff6a00">
+                                                @hotel.Price.ToString("N0")
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="exampleModal-@(hotel.Id)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" style="border: 1px solid #aaa; border-radius:7px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3 text-success" id="exampleModalLabel">مشخصات هتل</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body m-0">
+                                    <partial name="_HotelDetailsPartial" model="@hotel"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">بستن</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                       
+                }
+                
+            </div>
+        </div>
+
+    </form>
 </div>

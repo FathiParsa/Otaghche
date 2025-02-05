@@ -1,0 +1,35 @@
+﻿@model Hotel
+
+<div class="row">
+	<div class="col-12 col-md-5">
+		<img src="@Model.ImageUrl" style="border-radius:10px;" width="100%" />
+	</div>
+	<div class="col-12 col-md-7">
+		<div class="row p-2">
+			<div class="col-12">
+				<p class="card-title text-warning mb-3" style="font-size:xx-large">@Model.Name</p>
+				<p class="card-text" style="font-size:large">
+					@Html.Raw(Model.Description)
+				</p>
+				<p class="h5 text-white">امکانات رفاهی</p>
+				<ul>
+					@foreach (var amenity in Model.Amenities)
+					{
+						<li>@amenity.Name</li>
+					}
+				</ul>
+			</div>
+		</div>
+		<div class="row col-12 ps-4">
+			<span class="text-start p-0 pt-3 m-0">
+				<span class=""> <strong>   ظرفیت اتاق ها   :    @Model.Occupancy   </strong> </span><br />
+				<span class=" pt-1"> <strong>   مساحت  :   @Model.Sqft   </strong> </span><br />
+				<p class="text-warning font-weight-bold pt-1 h3">
+					<span style="color: #ff6a00">
+						تومان  @Model.Price.ToString("N0")
+					</span>
+				</p>
+			</span>
+		</div>
+	</div>
+</div>
