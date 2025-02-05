@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -32,4 +32,125 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+
+
+@font-face {
+    font-family: 'PeydaWeb';
+    src: url('/fonts/woff2/PeydaWeb-Medium.woff2') format('woff2'),
+        url('/fonts/woff/PeydaWeb-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PeydaWebFaNum';
+    src: url('/fonts/woff/PeydaWebFaNum-Medium.woff') format('woff'),
+        url('/fonts/woff2/PeydaWebFaNum-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the font globally */
+body {
+    font-family: PeydaWeb, sans-serif !important;
+    direction: rtl;
+}
+
+/* Override Bootstrap's default body font if needed */
+.container, .row, .col, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: PeydaWeb, sans-serif !important;
+}
+
+/* If you want to change fonts in Bootstrap components, you can do it here */
+.btn, .navbar, .card, .form-control {
+    font-family: PeydaWeb, sans-serif !important;
+}
+
+
+
+{
+    font-feature-settings: 'tnum' 1 !important; /* Ensure use of tabular numbers if needed */
+}
+
+/* Set Persian numbers specifically to any number-containing elements */
+.numbers, .numeric, span, p {
+    font-family: 'PeydaWebFaNum', sans-serif !important;
+}
+
+    /* You can even target number-containing elements if needed */
+    .numbers span, .numeric span {
+        font-family: 'PeydaWebFaNum', sans-serif !important;
+    }
+
+
+
+
+.wrapper {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #aaa;
+}
+
+.box100 p, .box200 p, .box300 p, .box400 p, .box500 p, .box600 p, .box700 p, .box800 p, .box900 p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.box100, .box100 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 100;
+    font-size: 25px;
+}
+
+.box200, .box200 h1 {
+    margin: 10px 0 0 0;
+    font-weight: 200;
+    font-size: 25px;
+}
+
+.box300, .box300 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.box400, .box400 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.box500, .box500 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.box600, .box600 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.box700, .box700 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.box800, .box800 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.box900, .box900 h1 {
+    margin: 30px 0 0 0;
+    font-weight: 900;
+    font-size: 25px;
 }
