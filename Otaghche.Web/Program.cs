@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Otaghche.Appliaction.Common.Interfaces;
+using Otaghche.Domain.Entities;
 using Otaghche.Infrastructure.Data;
 using Otaghche.Infrastructure.Repositories;
 
@@ -20,6 +22,9 @@ namespace Otaghche.Web
             builder.Services.AddScoped<IHotelRepository, HotelRepository>();
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
             builder.Services.AddScoped<IAmenityRepository, AmenityRepository>();
+
+            builder.Services.AddIdentity<ApplicationUser , IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             var app = builder.Build();
 

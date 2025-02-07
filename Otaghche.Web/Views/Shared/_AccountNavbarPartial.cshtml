@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@if(!User.Identity.IsAuthenticated)
+{
+    <ul class="navbar-nav d-flex justify-content-end flex-grow-1">
+        <li class="nav-item ">
+            <a class="nav-link" asp-controller="Account" asp-action="Login">ورود</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" asp-controller="Account" asp-action="Register">ثبت نام</a>
+        </li>
+    </ul>
+}
+else{
+    <ul class="navbar-nav d-flex justify-content-end flex-grow-1">
+        <li class="nav-item ">
+            @* <a class="nav-link" asp-controller="Account" asp-action="Login">ورود</a> *@
+            <p>   سلام   @User.Identity.Name  !</p>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" asp-controller="Account" asp-action="Logout">خروج</a>
+        </li>
+    </ul>
+}

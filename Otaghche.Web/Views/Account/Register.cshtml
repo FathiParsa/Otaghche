@@ -1,0 +1,64 @@
+﻿@model RegisterVM
+
+<div class="container pt-5">
+	<div class="card shadow border ">
+		<div class="card-header bg-success bg-gradient ml-0 py-4">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h2 class="py-2 text-white">ثبت نام کنید</h2>
+				</div>
+			</div>
+		</div>
+		<div class="card-body p-4">
+			<div class="row pt-3">
+				<div class="col-md-12">
+					<form class="row" method="post">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+						<div class="form-floating mb-3 col-md-12">
+							<input class="form-control" asp-for="Email" aria-required="true" />
+							<label class="ms-2 text-muted" asp-for="Email"></label>
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="form-floating mb-3 col-md-6">
+							<input class="form-control" asp-for="Name" aria-required="true" />
+							<label class="ms-2 text-muted" asp-for="Name"></label>
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class="form-floating mb-3 col-md-6">
+							<input class="form-control" asp-for="PhoneNumber" aria-required="true" />
+							<label class="ms-2 text-muted" asp-for="PhoneNumber"></label>
+							<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+						</div>
+						<div class="form-floating mb-3 col-md-6">
+							<input class="form-control" asp-for="Password" aria-required="true" />
+							<label class="ms-2 text-muted" asp-for="Password"></label>
+							<span asp-validation-for="Password" class="text-danger"></span>
+						</div>
+						<div class="form-floating mb-3 col-md-6">
+							<input class="form-control" asp-for="ConfirmPassword" aria-required="true" />
+							<label class="ms-2 text-muted" asp-for="ConfirmPassword"></label>
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+						</div>
+
+						<div class="form-floating mb-3 col-md-6">
+							<select class="form-select" asp-for="Role" asp-items="@Model.RolesList">
+								<option disabled selected>-نقش خود را انتخاب کنید-</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<button type="submit" class="w-100 btn btn-lg btn-outline-success">ثبت نام</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
